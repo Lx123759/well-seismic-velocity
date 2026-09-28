@@ -1,0 +1,43 @@
+# 大体量数据（按 data/README.md 中的地址与 MD5 自行下载）
+data/marmousi/
+data/taranaki/
+data/reference/
+*.segy
+*.sgy
+*.npy
+*.bin
+*.tar.gz
+*.zip
+
+# 模型权重与训练输出
+*.pt
+*.pth
+checkpoints/
+runs/
+logs/
+
+# 临时预览与备份
+.work/preview/
+.work/preview.pdf
+*.bak
+
+# Office 临时锁文件
+~$*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+build/
+dist/
+*.spec
+
+# 编辑器与本地设置
+.vscode/
+.idea/
+.claude/settings.local.json
+Thumbs.db

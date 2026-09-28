@@ -1,0 +1,133 @@
+===== rec_tar.json Taranaki Basin Curated Well Logs 2020-05-18 10.5281/zenodo.3832955
+creators: ['W.S.R. de Carvalho, Breno', 'Oliveira, Matheus', 'Avalone, Maiana', 'Hoffimann, Júlio', 'Szwarcman, Daniela', 'Guevara Diaz, Jorge', 'Zadrozny, Bianca']
+Machine learning (ML) models are being widely used in the geosciences for various tasks involving well log data, including prediction of missing well log curves, picking of stratigraphic surfaces, facies classification, and segmentation of different rock types. Even though various ML applications have been proposed in the literature, it is difficult to reproduce and advance the prior art without having access to the data and preprocessing steps used. In fact, there is an increasing need for benchmark cases to assess past and future solutions. The present dataset integrates well log data curated from the 2016 New Zealand Petroleum Exploration Public Data Pack.
+files: [('taranaki-basin-curated-well-logs.tar.gz', 228743380)]
+===== rec_velr.json VelRecover: An Interactive Python Tool for Building Velocity Models from Sparse Velocity Picks in Legacy Seismic Sections 2025-07-30 10.5281/zenodo.15053268
+creators: ['Pertuz, Alejandro', 'Benito, M. Isabel', 'LLANES ESTRADA, PILAR', 'Suarez-Gonzalez, Pablo', 'García-Martín, Martín']
+VelRecover is a GUI based tool designed to interpolate 2D seismic velocity data from sparse velocity picks found in vintage seismic reflection sections. Results can be exported as text or binary files, suitable for further seismic processing workflows. The tool requires a SEGY file and a text file containing velocities, CDPs, and TWTs as input.
+Check the GitHub repository for detailed information and the latest development release: https://github.com/a-pertuz/velrecover
+Installation &amp; Running
+To install VelRecover, you can:
+
+
+Using pip:
+
+pip install velrecover
+
+
+
+
+From Source:
+
+pip install git+https://github.com/username/velrecover.git
+
+
+
+Once installed, run the application by typing:
+
+velrecover
+
+Alternatively, you can download the zip and run the file run_src_velrecover.py 
+ 
+ 
+ 
+files: [('VelRecover-1.1.0.zip', 8278419)]
+===== rec_vp.json Marmousi Velocity Model 2025-07-18 10.5281/zenodo.16114161
+creators: ['HARIKUMAR, ROHIN']
+This repository contains the Marmousi velocity model used in Experiments 2 and 3 used in the study 
+``Machine Learning For Seismic Low Frequency Extrapolation'' submitted to Geophysical Journal International.
+files: [('marmousi_vp.bin', 6912204)]
+===== zen_marm.json hits: 5
+ - Marmousi2 | 2024-11-28 | 10.5281/zenodo.14233581 | ['wang, suibao']
+ - An open-source package for low-frequency reconstruction based on 3D convolutional neural networks | 2021-05-06 | 10.5281/zenodo.4739779 | ['Xintao Chai']
+ - unet-acquisition-footprint | 2026-08-25 | 10.5281/zenodo.22097313 | ['ahmad, ahmad']
+ - Marmousi2-Res: Multi-Saturation Resistivity Extension to the Marmousi2 Model | 2026-08-02 | 10.5281/zenodo.21754424 | ['Yogi, Ida Bagus Suananda', 'Hermana, Maman', 'Soleimani, Hassan']
+ - Code and frozen results for "Global-to-Local Decoding for Full-Waveform Inversion with Missing Low Frequencies" (MR-ASPD-FWI) | 2026-07-21 | 10.5281/zenodo.21465299 | ['Hu, Ning', 'Hu, Chuyang', 'Li, Shuqun']
+===== zen_f3.json hits: 10
+ - AdaSemSeg: Processed Seismic Facies Datasets (F3, Parihaka, Penobscot) | 2026-08-02 | 10.5281/zenodo.21764042 | ['Saha, Surojit', 'Whitaker, Ross Tyler']
+ - Netherlands F3 Interpretation Dataset | 2018-09-20 | 10.5281/zenodo.1471548 | ['Baroni, Lais', 'Silva, Reinaldo Mozart', 'S. Ferreira, Rodrigo']
+ - The synthetic and field seismic datasets for "ClinoformNet-1.0: stratigraphic forward modeling and deep learning for seismic clinoform delineation" | 2022-09-29 | 10.5281/zenodo.7122471 | ['Gao, Hui', 'Wu, Xinming', 'Zhang, Jinyu']
+ - Structural and seismic sequence stratigraphy analysis of seismic and biostratigraphy data from an onshore field, Niger Delta, Nigeria | 2019-01-13 | 10.5281/zenodo.19389394 | ['Emujakporue, G. O.', 'Eyo, A. J.']
+ - Facies Classification Benchmark | 2019-01-12 | 10.5281/zenodo.3755060 | ['Alaudah, Yazeed', 'Michalowicz, Patrycja', 'Alfarraj, Motaz']
+ - LANDMASS | 2020-06-19 | 10.5281/zenodo.3901644 | ['Ghassan AlRegib', 'Yazeed Alaudah', 'Motaz Alfarraj']
+ - Out-of-plane shake-table tests on full-scale URM gables considering different roof configurations (ERIES-SUPREME) | 2025 | 10.60756/euc-1avy7q49 | ['Damiani, Nicolò', 'Graziotti, Francesco', 'Messali, Francesco']
+ - Lepidocyrtus Bourlet 1839 | 2021-06-04 | 10.5281/zenodo.5047183 | ['Mateos, Eduardo', 'Greenslade, Penelope']
+ - AdaSemSeg: Trained Model Checkpoints for Adaptive Few-Shot Semantic Segmentation of Seismic Facies | 2026-08-02 | 10.5281/zenodo.21762769 | ['Saha, Surojit', 'Whitaker, Ross Tyler']
+ - Unicamp-NAMSS: A General-Purpose Diversified 2D Seismic Image Dataset from NAMSS | 2026-01-21 | 10.5281/zenodo.18330487 | ['Lucas de Magalhães Araujo', 'Oliveira Napoli, Otávio', 'Avila, Sandra']
+===== zen_q1.json hits: 15
+ - Marmousi Velocity Model | 2025-07-18 | 10.5281/zenodo.16114161 | ['HARIKUMAR, ROHIN']
+ - Training data and test data sets for simultaneous inversion of velocity density based on U-T | 2023-05-24 | 10.5281/zenodo.7965402 | ['Chen Guoxin']
+ - MT data and Vp velocity model | 2023-09-26 | 10.5281/zenodo.8378540 | ['Maria Constanza Manassero']
+ - On the trail of fluids in the northernmost intracontinental earthquake swarm areas of the Leipzig-Regensburg fault zone, Germany | 2022-05-02 | 10.5281/zenodo.6511543 | ['Marcel van Laaten', 'Ulrich Wegler', 'Tom Eulenfeld']
+ - Multi-scale velocity models for the Ridgecrest region, CA | 2024-03-01 | 10.5281/zenodo.10740715 | ['Li, Guoliang', 'Ben-Zion, Yehuda']
+ - Dataset of the P-wave (Vp) and S-wave (Vs) velocity values used in the study titled: "Spatial distribution of Vp/Vs for sediment and crust off Sanriku, Japan, using distributed acoustic sensing data" | 2025-10-16 | 10.5281/zenodo.17364108 | ['Fukushima, Shun']
+ - Xinjiang Velocity Model | 2025-09-30 | 10.5281/zenodo.17287992 | ['Zhiqi, Zhang', 'Ying, Liu', 'Huajian, Yao']
+ - Alaska 2018 update for USGSG18AP00017: Initial Development of Alaska Community Seismic Velocity Models | 2019-01-21 | 10.5281/zenodo.2544925 | ['Eberhart-Phillips, Donna', 'Nayak, Avinash', 'Ruppert, Natalia']
+ - EM-MSWU FWI | 2024-12-26 | 10.5281/zenodo.14556630 | ['Wang, Hongtao', 'Yang, Dikun']
+ - Input and Output Data for local earthquake tomography in the central Dead Sea Fault using PyVoroTomo | 2025-03-19 | 10.5281/zenodo.15053183 | ['Ben Dor, Guy']
+ - Microseismic Event Catalog and 3-D P-Wave Velocity Model for San Emidio, Nevada 2022 | 2025-01-20 | 10.5281/zenodo.14695234 | ['Guo, Hao', 'Thurber, Clifford', 'Cunningham, Erin']
+ - Dataset and Trained Models for "Shallow-to-deep velocity model building via diffusion models" | 2026-04-26 | 10.5281/zenodo.19790506 | ['Cheng, Shijun']
+ - Simul2023: a flexible program for inversion of earthquake data for 3-D velocity and hypocenters or 3-D Q | 2024-02-23 | 10.5281/zenodo.10695070 | ['Eberhart-Phillips, Donna', 'Thurber, Clifford', 'Rietbrock, Andreas']
+ - Simul2017: a flexible program for inversion of earthquake data for 3-D velocity and hypocenters or 3-D Q | 2021-12-01 | 10.5281/zenodo.5746047 | ['Eberhart-Phillips, Donna', 'Thurber, Clifford', 'Rietbrock, Andreas']
+ - Alaska 2020 update for USGS G19AP00019: Initial Development of Alaska Community Seismic Velocity Models | 2020-03-25 | 10.5281/zenodo.3727244 | ['Eberhart-Phillips, Donna', 'Nayak, Avinash', 'Ruppert, Natalia']
+===== zen_q2.json hits: 15
+ - Investigation of trend between porosity and drilling parameters in one of the Iranian undeveloped major gas fields | 2023-03 | 10.1016/j.ptlrs.2022.03.001 | ['Ayatizadeh Tanha, Abbas', 'Parizad, Amirhossein', 'Shahbazi, Khalil']
+ - Rock densities from deep well sonic logs in Central Italy | 2026-03-18 | 10.5281/zenodo.19096119 | ['Mariucci, Maria Teresa', 'Montone, Paola']
+ - Lithofacies and depositional environments in the Saltpond Basin of Ghana: A well log analysis | 2025-04-30 | 10.5281/zenodo.17263773 | ['Yankyerah, Benedict T', 'Asiedu, Daniel K', 'Odainkey, Mustapha']
+ - Compressional Velocity data from 243 Central Valley Wells | 2022-09-02 | 10.5281/zenodo.7045120 | ['Vasco, Donald']
+ - Borehole logs of the projects STIMTEC and STIMTEC-X | 2023-08-15 | 10.5281/zenodo.8250247 | ['Jimenez Martinez, Victoria', 'Renner, Jörg']
+ - Figure 1 from: Amosu A, Mahmood H (2018) PyLogFinder: A Python Program for Graphical Geophysical Log Selection. Research Ideas and Outcomes 4: e23676. https://doi.org/10.3897/rio.4.e23676 | 2018-02-09 | 10.3897/rio.4.e23676.figure1 | ['Amosu, Adewale', 'Mahmood, Hamdi']
+ - PyLogFinder: A Python Program for Graphical Geophysical Log Selection | 2018-02-01 | 10.3897/rio.4.e23676 | ['Amosu, Adewale', 'Mahmood, Hamdi']
+ - FIGURE 3. 1 in Elongated theropod tracks from the Cretaceous Apenninic Carbonate Platform of southern Latium (central Italy | 2015-09-30 | 10.5281/zenodo.13312111 | ['Citton, P', 'Nicosia, U', 'Nicolosi, I']
+ - Estimation of porosity distribution from formation image logs and comparing the results with NMR log analysis: Implications for the heterogeneity analysis of carbonate reservoirs with an example from the Asmari reservoir, southwest Iran | 2024-08-03 | 10.1016/j.jafrearsci.2024.105366 | ['Moradi, Milad', 'Kadkhodaie, Ali', 'Taheri, Mohammad Reza']
+ - The Political Philosophy of Aristotle | 1897-01-01 | 10.1177/000271629701000301 | ['Logs, I.']
+ - Taranaki Basin Curated Well Logs | 2020-05-18 | 10.5281/zenodo.3832955 | ['W.S.R. de Carvalho, Breno', 'Oliveira, Matheus', 'Avalone, Maiana']
+ - Indirect determination of shear wave velocity in slow formations using full-wave sonic logging technique | 2020-12-29 | 10.1016/j.jrmge.2020.05.009 | ['Beltran, Francisco', 'Yáñez González, Álvaro', 'CRESPO ALVAREZ, MARIA JOSE']
+ - MR3D - Synthetic Resistivity Well Logs Dataset | 2024-04-20 | 10.5281/zenodo.11002012 | ['Menor, Everton N.', 'Menezes, Paulo T. L.']
+ - Sonic materialization of linguistic data | 2015-03-12 | 10.5281/zenodo.4623218 | ['Paraskevoudi, Nadia', 'Alexandropoulos, Timos']
+ - Dataset, analysis code and mathematical model: Synthetic capillary pressure modeling with dipole sonic waves for enhanced reservoir characterization | 2026-03-06 | 10.5281/zenodo.18890180 | ['Mendoza Sanz, Jorge Segundo', 'Galarza, Janner']
+===== zen_q3.json hits: 15
+ - GeoSheaf: A Sheaf-Theoretic Framework for Seismic-Well Integration | 2025-01-30 | 10.5281/zenodo.14774480 | ['Gerald Enrique Nelson Mc Kenzie']
+ - Seismic refraction, reflection and free-air gravity data of OBS2020-3 in the southwest sub-basin, South China Sea | 2024-11-29 | 10.5281/zenodo.14241669 | ['Zhang, Lu', 'Cai, Chen', 'Fang, Hongjian']
+ - Investigation of trend between porosity and drilling parameters in one of the Iranian undeveloped major gas fields | 2023-03 | 10.1016/j.ptlrs.2022.03.001 | ['Ayatizadeh Tanha, Abbas', 'Parizad, Amirhossein', 'Shahbazi, Khalil']
+ - EVALUATION OF RESERVOIR SATURATION USING METHODS OF MINING GEOPHYSICS | 2026-05-20 | 10.5281/zenodo.20314805 | ['Hasanov Adalat Badal', 'Ahmadzadeh Leyla Elshan']
+ - VelRecover: An Interactive Python Tool for Building Velocity Models from Sparse Velocity Picks in Legacy Seismic Sections | 2025-07-30 | 10.5281/zenodo.15053268 | ['Pertuz, Alejandro', 'Benito, M. Isabel', 'LLANES ESTRADA, PILAR']
+ - Multi-channel seismic reflection profiles MP06b and INS-Line1 (INSIGHT cruises) and diffraction imaging code | 2020-09-26 | 10.5281/zenodo.3946170 | ['Ford, Jonathan']
+ - Critical-zone modeling: seismic refraction records, calibration code, and outputs from the Dry Creek, Idaho | 2026-08-01 | 10.5281/zenodo.21750223 | ['Chen, Hang']
+ - Seismic attenuation imaging of free gas distribution reveals a structural uplift-controlled methane migration system in the Qiongdongnan Basin, South China Sea | 2026-07-22 | 10.5281/zenodo.21490102 | ['Liu, Tao', 'Fan, Qi', 'Li, Lixia']
+ - Reservoir and Structural Analysis Through Modeling using Well Logs and 3D Seismic Data in OY-1 Field,  Onshore Niger Delta, Nigeria | 2023-09-18 | 10.5281/zenodo.8394506 | ['James Abisoye Oyelayo', 'Daniel Oluwaseun Akinyemi']
+ - Supplementary Data for a Feasibility Study on Boulder Detection in the Shallow Sub-Seafloor with Beamforming on Ultra-High Resolution Seismic Data | 2021-12-06 | 10.5281/zenodo.5761815 | ['Römer-Stange, Nikolas', 'Wenau, Stefan', 'Bihler, Viola']
+ - Integrated modelling of seismic velocities and impact on prospect evaluation | 2021-09-15 | 10.5281/zenodo.7686634 | ['Jarrod Dunne', 'James Parsons']
+ - Adele 3D seismic survey segy format used in the FORCE 2020 machine learning competition for fault identification | 2020-12-01 | 10.5281/zenodo.4299758 | ['geoscience Australia']
+ - Redefining copper exploration at Oak Dam IOCG deposit through high-end hardrock seismic processing | 2024-10-11 | 10.5281/zenodo.13918205 | ['Robert Tran Thinh To', 'Min Lee Chua', 'Mengmin Huang']
+ - TRANSALP seismic diffraction imaging | 2025-01-22 | 10.5281/zenodo.14719546 | ['Schwarz, Benjamin', 'Bauer, Klaus', 'Wawerzinek, Britta']
+ - Introduction to NumPy and Its Application in Seismic Data Denoising | 2024-01-12 | 10.5281/zenodo.10478694 | ['Dhanapal, Syadhisy']
+===== npy
+(1, 2721, 701) float32 -1.159297 1.0907888
+marmousi/marmousi_vp.bin 6912204 float32 count 1728051.0
+ le min/max 1500.0 5500.0 [1500. 1500. 1500. 1500. 1500.]
+marmousi/vp_marmousi_bi 2568004 float32 count 642001.0
+ le min/max 1.0279999 4.7 [1.5 1.5 1.5 1.5 1.5]
+===== taranaki tar
+Traceback (most recent call last):
+  File "<stdin>", line 21, in <module>
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2001, in getnames
+    return [tarinfo.name for tarinfo in self.getmembers()]
+                                        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 1993, in getmembers
+    self._load()        # all members, we first have to
+    ^^^^^^^^^^^^
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2694, in _load
+    while self.next() is not None:
+          ^^^^^^^^^^^
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\tarfile.py", line 2600, in next
+    self.fileobj.seek(self.offset - 1)
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\gzip.py", line 421, in seek
+    return self._buffer.seek(offset, whence)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\_compression.py", line 153, in seek
+    data = self.read(min(io.DEFAULT_BUFFER_SIZE, offset))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\l'x\AppData\Local\Programs\Python\Python312\Lib\gzip.py", line 547, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
