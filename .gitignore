@@ -2,6 +2,7 @@
 data/marmousi/
 data/taranaki/
 data/reference/
+data/synthetic/
 *.segy
 *.sgy
 *.npy

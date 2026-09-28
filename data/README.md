@@ -4,38 +4,43 @@
 
 | 数据 | 本地文件 | 用途 | 状态 | 参考地址 | MD5 |
 |---|---|---|---|---|---|
-| Marmousi 速度模型 | `marmousi/marmousi_vp.bin` | 速度场真值/监督标签 | 已有，6,912,204 字节 | `https://zenodo.org/api/records/16114161/files/marmousi_vp.bin/content` | `3603290793a5d870fb1290301bc68dbd` |
-| Marmousi 双精度/备用模型 | `marmousi/vp_marmousi_bi` | 备用速度模型 | 已有，2,568,004 字节 | 项目本地文件 | — |
-| 合成地震数据 | `marmousi/marmousi2_synthetic_seismic.npy` | 地震输入 | 已有，7,629,812 字节 | 项目本地文件 | — |
-| Taranaki 测井数据 | `taranaki/taranaki-basin-curated-well-logs.tar.gz` | 测井曲线与井位 | **文件不完整**，当前 8,214,504 字节 | `https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content` | `71e8c6d10274fcb65ba006612e2939fe` |
+| Marmousi 速度模型 | `marmousi/marmousi_vp.bin` | 跨模型泛化测试 | 已有，MD5 校验通过 | `https://zenodo.org/api/records/16114161/files/marmousi_vp.bin/content` | `3603290793a5d870fb1290301bc68dbd` |
+| Marmousi2 速度模型（截取段） | `marmousi/vp_marmousi_bi` | 速度场真值/监督标签 | 已有，来源待补记 | 项目本地文件 | `dd2c23ff84383a4197b5c3e8e53d7738` |
+| 合成地震数据 | `marmousi/marmousi2_synthetic_seismic.npy` | 地震输入（见下方“已知问题”） | 已有，来源待补记 | 项目本地文件 | `10bf781eb8e5fcc77ef53f866ad89da3` |
+| Taranaki 测井数据 | `taranaki/taranaki-basin-curated-well-logs.tar.gz` | 测井曲线与井位 | 已有，MD5 校验通过；解压后为 coords.csv（井位）、logs.csv（407 口井，888 MB）| `https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content` | `71e8c6d10274fcb65ba006612e2939fe` |
 | VelRecover 参考实现 | `reference/VelRecover-1.1.0.zip` | 速度插值与界面设计参考 | 已有，8,278,419 字节 | `https://zenodo.org/api/records/15053268/files/VelRecover-1.1.0.zip/content` | `793cf016f3656a80b18b2cb23efe30a0` |
 
-## 补齐 Taranaki 数据
+## 下载 Taranaki 数据
 
-该压缩包记录大小应为 228,743,380 字节。网络可用时，在项目根目录执行以下命令即可从断点继续下载：
+压缩包大小 228,743,380 字节，下载中断时可在项目根目录执行以下命令断点续传，然后解压：
 
-```powershell
-curl.exe -L -C - --retry 5 --retry-delay 3 `
-  -o data\taranaki\taranaki-basin-curated-well-logs.tar.gz `
-  https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content
-
-(Get-FileHash data\taranaki\taranaki-basin-curated-well-logs.tar.gz -Algorithm MD5).Hash
+```bash
+curl -L -C - --retry 5 -o data/taranaki/taranaki-basin-curated-well-logs.tar.gz   https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content
+md5sum data/taranaki/taranaki-basin-curated-well-logs.tar.gz   # 应为 71e8c6d10274fcb65ba006612e2939fe
+tar -xzf data/taranaki/taranaki-basin-curated-well-logs.tar.gz -C data/taranaki
 ```
 
-校验结果应为：
+数据许可为 CDLA-Sharing 1.0，是 CSV 格式而非 LAS。
 
-```text
-71E8C6D10274FCB65BA006612E2939FE
-```
+## 数据格式（2026-09-29 核对）
 
-压缩包解开后应至少包含 `coords.csv`、`logs.csv` 和 `LICENSE.txt`。
+| 文件 | 类型 | 形状（读取方式） | 取值范围 | 单位 |
+|---|---|---|---|---|
+| `marmousi_vp.bin` | float32，无文件头 | `np.fromfile(f, np.float32).reshape(2301, 751)`，即（道, 深度） | 1500～5500 | **m/s** |
+| `vp_marmousi_bi` | float32（不是双精度），无文件头 | `np.fromfile(f, np.float32).reshape(1601, 401)`，即（道, 深度） | 1.028～4.700 | **km/s** |
+| `marmousi2_synthetic_seismic.npy` | float32 | `np.load(f)[0]`，形状（2721, 701），即（道, 采样点） | -1.16～1.09 | 无量纲 |
 
-## 当前环境检查结果
+注意：
+- 两个速度模型的单位不同，读取后要先统一单位。
+- 地震数据首尾两道（第 0 道、第 2720 道）全为 0，使用前应去掉。
 
-- `marmousi2_synthetic_seismic.npy` 的文件头记录形状为 `(1, 2721, 701)`、数据类型为 `float32`。
-- `marmousi_vp.bin` 的大小为 1,728,051 个 `float32`，需要结合数据来源说明确定二维尺寸后再读取。
-- 当前 Python 环境没有安装 `torch`、`lasio` 和 `segyio`，后续实现训练和 LAS/SEG-Y 读取时需要补充依赖。
-- 本次尝试下载 Taranaki 数据时，环境无法解析 `zenodo.org`，因此未覆盖现有的部分文件。
+## 已知问题
+
+**现有合成地震剖面与 `vp_marmousi_bi` 不是同一区域。** 地震剖面覆盖 Marmousi2 全宽（两侧为平缓地层），`vp_marmousi_bi` 只截取了中部构造区。无论按深度域还是时间域（扫描 dz、dt、子波主频）对齐，逐道相关系数都接近 0，也不知道截取窗口的位置。因此这两份数据不能直接组成训练样本对。
+
+**已解决（2026-09-29）：** 改用 `scripts/make_synthetic.py` 由 `vp_marmousi_bi` 正演生成深度域合成地震（Gardner 密度 + 25 Hz Ricker 子波），输出到 `data/synthetic/`，与速度模型逐点对齐。原 `marmousi2_synthetic_seismic.npy` 仅保留作地震显示与读取测试用。
+
+原始数据没有记录采样间隔，脚本默认按 dx = dz = 10 m 处理，可用 `--dz` 修改。如需完整 Marmousi2 数据，可下载 `10.5281/zenodo.14233581`。
 
 ## 建议补充的数据
 
