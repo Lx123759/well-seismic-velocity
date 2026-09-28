@@ -16,6 +16,7 @@ src/velbuilder/
   services/   业务逻辑层：流程编排、后台任务
   gui/        表示层：PySide6 界面
 scripts/      数据生成等命令行脚本
+docs/         需求规格说明书、设计说明书等文档
 tests/        pytest 测试
 data/         数据目录（大文件不入库，见 data/README.md）
 .work/        开题任务书生成脚本与图件
