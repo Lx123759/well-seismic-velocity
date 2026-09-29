@@ -7,7 +7,10 @@
 - [x] 依赖安装完成后，确认 PyTorch 能识别 RTX 4060，并生成 `requirements.txt`
 - [x] 统计 Taranaki 数据里有声波曲线（DTC）的井数与深度覆盖
 - [x] 把 Word 中改好的进度表日期同步到生成脚本 `.work/build_proposal.py`
-- [x] 在 `data/README.md` 中补记 `vp_marmousi_bi` 与原合成地震的来源（前者来自 Devito，网格间距改为 7.5 m；后者出处不明，已弃用）
+- [x] 在 `data/README.md` 中补记全部数据来源：Devito 子块（7.5 m）；Marmousi2 合成地震来自 Zenodo 14233581，与官方 Marmousi2 速度 `[::5, ::4]` 逐点对齐，作为主实验数据
+- [x] 补充下载泛化测试模型（Sigsbee2A、Overthrust、OpenFWI 样例）与真实井数据（Central Valley），登记来源、单位、网格与用途
+- [x] 明确主实验与补充实验数据分工（docs/03 第 1 节），并同步开题任务书的数据描述
+- [x] 修正 `gen-docx.js` 中其他项目遗留的机构与作者文字，封面信息放在 `docs/cover/*.json`
 
 ## 一、设计阶段（10.01～10.14）
 

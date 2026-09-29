@@ -3,6 +3,8 @@ data/marmousi/
 data/marmousi2/
 data/taranaki/
 data/reference/
+data/benchmarks/
+data/wells/
 data/synthetic/
 *.segy
 *.sgy

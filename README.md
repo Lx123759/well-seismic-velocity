@@ -37,15 +37,26 @@ pip install -r requirements.txt
 
 ## 准备数据
 
-1. 按 [data/README.md](data/README.md) 中的地址下载原始数据，并校验 MD5。
-2. 生成与速度模型逐点对齐的深度域合成地震：
+1. 按 [data/README.md](data/README.md) 下载原始数据并校验 MD5（`md5sum -c data/checksums.md5`，在 data 目录执行）。
+2. 生成主实验数据（官方 Marmousi2 速度抽样到地震网格，2721×701，逐点对齐）：
 
 ```bash
-python scripts/make_synthetic.py            # 默认 dx=dz=7.5 m，25 Hz Ricker 子波，不加噪
+python scripts/prepare_marmousi2.py
+```
+
+3. 补充实验需要自行正演地震时：
+
+```bash
+python scripts/make_synthetic.py            # Devito 子块，dx=dz=7.5 m，25 Hz Ricker 子波
 python scripts/make_synthetic.py --snr 5    # 加噪版本
 ```
 
-输出位于 `data/synthetic/`（`marmousi2_vp.npy`、`marmousi2_seismic.npy`、`meta.json`、`preview.png`）。
+## 文档转 Word
+
+```bash
+npm install                                  # 首次使用
+node gen-docx.js --md docs/01_需求规格说明书.md --out 需求规格说明书.docx --cover docs/cover/01_需求规格说明书.json
+```
 
 ## 运行测试
 

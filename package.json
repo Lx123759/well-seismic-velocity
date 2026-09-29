@@ -1,0 +1,9 @@
+{
+  "name": "ruanjian-shixun-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Markdown -> DOCX 转换脚本依赖",
+  "dependencies": {
+    "docx": "^9.8.1"
+  }
+}

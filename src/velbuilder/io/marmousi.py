@@ -32,3 +32,27 @@ def load_seismic_npy(path, drop_dead_traces=True):
     if drop_dead_traces:
         data = data[np.abs(data).max(axis=1) > 0]
     return data.astype(np.float32)
+
+
+# 官方 Marmousi2 速度模型为 1.25 m 网格（13601×2801）；配套合成地震为 2721×701，
+# 即模型横向每 5 点、纵向每 4 点抽样一次（道距 6.25 m、深度采样 5 m）。
+MARMOUSI2_STEP = (5, 4)
+MARMOUSI2_SPACING = (6.25, 5.0)
+
+
+def load_marmousi2_pair(vp_segy, seismic_npy):
+    """读取官方 Marmousi2 速度（SEG-Y，km/s）与配套地震，返回逐点对齐的 (vp m/s, seismic)。
+
+    两者形状均为 (2721, 701)，排列为 (道, 深度)。地震首尾两道为全零道，保留以维持对齐，
+    使用方应在切片或评估时排除。
+    """
+    import segyio
+
+    with segyio.open(str(vp_segy), ignore_geometry=True) as f:
+        vp = segyio.tools.collect(f.trace[:])
+    sx, sz = MARMOUSI2_STEP
+    vp = (vp[::sx, ::sz] * 1000.0).astype(np.float32)
+    seis = load_seismic_npy(seismic_npy, drop_dead_traces=False)
+    if vp.shape != seis.shape:
+        raise ValueError(f"速度 {vp.shape} 与地震 {seis.shape} 形状不一致，请检查是否为官方 Marmousi2 文件")
+    return vp, seis

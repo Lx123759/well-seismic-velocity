@@ -1,0 +1,15 @@
+4e1bade80fa6c825fc88b8ed6a10abf3 *marmousi2/vp_marmousi-ii.segy
+ef3f570f87343d58d6437581b8028710 *marmousi2/marmousi_Ip_model.npy
+10bf781eb8e5fcc77ef53f866ad89da3 *marmousi/marmousi2_synthetic_seismic.npy
+3603290793a5d870fb1290301bc68dbd *marmousi/marmousi_vp.bin
+dd2c23ff84383a4197b5c3e8e53d7738 *marmousi/vp_marmousi_bi
+fc67d9ad400273fea2e16e5f905a61e6 *benchmarks/openfwi/fva_velocity1.npy
+782f13209cf89d445781553b0f232706 *benchmarks/openfwi/fva_velocity2.npy
+8fe17ee6eb9ea40939463d2ddd7f0e94 *benchmarks/openfwi/fva_velocity3.npy
+ae4082cdcebbc7714eedd382d7925804 *benchmarks/overthrust/overthrust_3D_true_model.h5
+3f40226e1278a7dffd83f4ae8256cf44 *benchmarks/sigsbee/sigsbee2a_migvel.sgy
+9964c898144f44125ed2de01f6d8e190 *benchmarks/sigsbee/sigsbee2a_stratigraphy.sgy
+a784700463db34f554ed2bcf8d0fb62c *wells/central_valley/LatLon.243Wells.ascii
+2835af1a921d60701aa025a92a4fc4ba *wells/central_valley/Vp.243Wells.ascii
+71e8c6d10274fcb65ba006612e2939fe *taranaki/taranaki-basin-curated-well-logs.tar.gz
+793cf016f3656a80b18b2cb23efe30a0 *reference/VelRecover-1.1.0.zip
