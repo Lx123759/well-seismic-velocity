@@ -1,6 +1,6 @@
 """由 Marmousi2 截取段速度模型生成逐点对齐的深度域合成地震，供训练与评估使用。
 
-用法：python scripts/make_synthetic.py [--dz 10] [--freq 25] [--snr 0]
+用法：python scripts/make_synthetic.py [--dz 7.5] [--freq 25] [--snr 0]
 输出：data/synthetic/marmousi2_vp.npy、marmousi2_seismic.npy、meta.json 和预览图
 """
 import argparse
@@ -19,7 +19,7 @@ from velbuilder.io.marmousi import load_velocity  # noqa: E402
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dz", type=float, default=10.0, help="深度采样间隔 (m)，原始数据未记录，按 10 m 假定")
+    ap.add_argument("--dz", type=float, default=7.5, help="网格间距 (m)，Devito 预设模型给出 dx = dz = 7.5 m")
     ap.add_argument("--freq", type=float, default=25.0, help="Ricker 子波主频 (Hz)")
     ap.add_argument("--dt", type=float, default=0.001, help="正演时间采样间隔 (s)")
     ap.add_argument("--snr", type=float, default=0.0, help="信噪比（振幅比），0 表示不加噪")

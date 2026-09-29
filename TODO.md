@@ -7,7 +7,7 @@
 - [x] 依赖安装完成后，确认 PyTorch 能识别 RTX 4060，并生成 `requirements.txt`
 - [x] 统计 Taranaki 数据里有声波曲线（DTC）的井数与深度覆盖
 - [x] 把 Word 中改好的进度表日期同步到生成脚本 `.work/build_proposal.py`
-- [ ] 在 `data/README.md` 中补记 `vp_marmousi_bi` 与原合成地震的来源（需本人回忆出处）
+- [x] 在 `data/README.md` 中补记 `vp_marmousi_bi` 与原合成地震的来源（前者来自 Devito，网格间距改为 7.5 m；后者出处不明，已弃用）
 
 ## 一、设计阶段（10.01～10.14）
 

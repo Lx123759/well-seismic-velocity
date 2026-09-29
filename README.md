@@ -41,7 +41,7 @@ pip install -r requirements.txt
 2. 生成与速度模型逐点对齐的深度域合成地震：
 
 ```bash
-python scripts/make_synthetic.py            # 默认 dz=10 m，25 Hz Ricker 子波，不加噪
+python scripts/make_synthetic.py            # 默认 dx=dz=7.5 m，25 Hz Ricker 子波，不加噪
 python scripts/make_synthetic.py --snr 5    # 加噪版本
 ```
 

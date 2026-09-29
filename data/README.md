@@ -5,8 +5,8 @@
 | 数据 | 本地文件 | 用途 | 状态 | 参考地址 | MD5 |
 |---|---|---|---|---|---|
 | Marmousi 速度模型 | `marmousi/marmousi_vp.bin` | 跨模型泛化测试 | 已有，MD5 校验通过 | `https://zenodo.org/api/records/16114161/files/marmousi_vp.bin/content` | `3603290793a5d870fb1290301bc68dbd` |
-| Marmousi2 速度模型（截取段） | `marmousi/vp_marmousi_bi` | 速度场真值/监督标签 | 已有，来源待补记 | 项目本地文件 | `dd2c23ff84383a4197b5c3e8e53d7738` |
-| 合成地震数据 | `marmousi/marmousi2_synthetic_seismic.npy` | 地震输入（见下方“已知问题”） | 已有，来源待补记 | 项目本地文件 | `10bf781eb8e5fcc77ef53f866ad89da3` |
+| Marmousi 二维模型（Devito 版） | `marmousi/vp_marmousi_bi` | 速度场真值/监督标签 | 已有，MD5 与来源一致 | `https://raw.githubusercontent.com/devitocodes/data/master/Simple2D/vp_marmousi_bi` | `dd2c23ff84383a4197b5c3e8e53d7738` |
+| 旧合成地震（已弃用） | `marmousi/marmousi2_synthetic_seismic.npy` | 仅用于读取与显示测试 | 已有，来源不明 | 项目本地文件 | `10bf781eb8e5fcc77ef53f866ad89da3` |
 | Taranaki 测井数据 | `taranaki/taranaki-basin-curated-well-logs.tar.gz` | 测井曲线与井位 | 已有，MD5 校验通过；解压后为 coords.csv（井位）、logs.csv（407 口井，888 MB）| `https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content` | `71e8c6d10274fcb65ba006612e2939fe` |
 | VelRecover 参考实现 | `reference/VelRecover-1.1.0.zip` | 速度插值与界面设计参考 | 已有，8,278,419 字节 | `https://zenodo.org/api/records/15053268/files/VelRecover-1.1.0.zip/content` | `793cf016f3656a80b18b2cb23efe30a0` |
 
@@ -21,6 +21,12 @@ tar -xzf data/taranaki/taranaki-basin-curated-well-logs.tar.gz -C data/taranaki
 ```
 
 数据许可为 CDLA-Sharing 1.0，是 CSV 格式而非 LAS。
+
+## 数据来源（2026-09-29 核实）
+
+- **`vp_marmousi_bi`**：来自开源地震正演框架 Devito 的测试数据仓库 [devitocodes/data](https://github.com/devitocodes/data/blob/master/Simple2D/vp_marmousi_bi)（2016-11-07 提交，说明为 “larger 2D marmousi”），本地文件 MD5 与仓库文件一致。Devito 在 `examples/seismic/preset_models.py` 中按形状 (1601, 401)、网格间距 (7.5 m, 7.5 m) 读取。
+  - 即横向 12 km、纵向 3 km。速度范围 1028～4700 m/s 与 Marmousi2 的水层和最高速度一致，推测是 Marmousi2 的中段重采样版本；Devito 只称其为“2D Marmousi model”，报告中按“Devito 提供的 Marmousi 二维模型”引用。
+- **`marmousi2_synthetic_seismic.npy`**：未查到确切出处。形状 2721×701 与 Marmousi2 全宽（17 km）按 6.25 m 道距重采样的道数吻合，但无法确认纵向采样。该文件已不参与训练与评估，只用于地震读取和显示测试，报告中不需要引用。
 
 ## 数据格式（2026-09-29 核对）
 
@@ -46,7 +52,7 @@ tar -xzf data/taranaki/taranaki-basin-curated-well-logs.tar.gz -C data/taranaki
 
 **已解决（2026-09-29）：** 改用 `scripts/make_synthetic.py` 由 `vp_marmousi_bi` 正演生成深度域合成地震（Gardner 密度 + 25 Hz Ricker 子波），输出到 `data/synthetic/`，与速度模型逐点对齐。原 `marmousi2_synthetic_seismic.npy` 仅保留作地震显示与读取测试用。
 
-原始数据没有记录采样间隔，脚本默认按 dx = dz = 10 m 处理，可用 `--dz` 修改。如需完整 Marmousi2 数据，可下载 `10.5281/zenodo.14233581`。
+网格间距取 Devito 给出的 dx = dz = 7.5 m（见下方“数据来源”），可用 `--dz` 修改。如需完整 Marmousi2 数据，可下载 `10.5281/zenodo.14233581`。
 
 ## 建议补充的数据
 
