@@ -1,5 +1,6 @@
 # 大体量数据（按 data/README.md 中的地址与 MD5 自行下载）
 data/marmousi/
+data/marmousi2/
 data/taranaki/
 data/reference/
 data/synthetic/
@@ -42,3 +43,6 @@ dist/
 .idea/
 .claude/settings.local.json
 Thumbs.db
+
+# Node（md 转 Word 工具的依赖）
+node_modules/

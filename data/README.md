@@ -6,7 +6,9 @@
 |---|---|---|---|---|---|
 | Marmousi 速度模型 | `marmousi/marmousi_vp.bin` | 跨模型泛化测试 | 已有，MD5 校验通过 | `https://zenodo.org/api/records/16114161/files/marmousi_vp.bin/content` | `3603290793a5d870fb1290301bc68dbd` |
 | Marmousi 二维模型（Devito 版） | `marmousi/vp_marmousi_bi` | 速度场真值/监督标签 | 已有，MD5 与来源一致 | `https://raw.githubusercontent.com/devitocodes/data/master/Simple2D/vp_marmousi_bi` | `dd2c23ff84383a4197b5c3e8e53d7738` |
-| 旧合成地震（已弃用） | `marmousi/marmousi2_synthetic_seismic.npy` | 仅用于读取与显示测试 | 已有，来源不明 | 项目本地文件 | `10bf781eb8e5fcc77ef53f866ad89da3` |
+| Marmousi2 合成地震 | `marmousi/marmousi2_synthetic_seismic.npy` | 地震输入，与下两行 Marmousi2 模型配套 | 已有，MD5 与来源一致 | `https://zenodo.org/api/records/14233581/files/marmousi_synthetic_seismic.npy/content` | `10bf781eb8e5fcc77ef53f866ad89da3` |
+| Marmousi2 纵波速度（官方全模型） | `marmousi2/vp_marmousi-ii.segy` | 速度真值/监督标签 | 已有，155,653,444 字节 | `https://www.ahay.org/data/marm2/vp_marmousi-ii.segy`（Madagascar 镜像；官方页面 https://wiki.seg.org/wiki/AGL_Elastic_Marmousi ） | `4e1bade80fa6c825fc88b8ed6a10abf3` |
+| Marmousi2 纵波阻抗 | `marmousi2/marmousi_Ip_model.npy` | 验证地震与模型的对应关系 | 已有，MD5 校验通过 | `https://zenodo.org/api/records/14233581/files/marmousi_Ip_model.npy/content` | `ef3f570f87343d58d6437581b8028710` |
 | Taranaki 测井数据 | `taranaki/taranaki-basin-curated-well-logs.tar.gz` | 测井曲线与井位 | 已有，MD5 校验通过；解压后为 coords.csv（井位）、logs.csv（407 口井，888 MB）| `https://zenodo.org/api/records/3832955/files/taranaki-basin-curated-well-logs.tar.gz/content` | `71e8c6d10274fcb65ba006612e2939fe` |
 | VelRecover 参考实现 | `reference/VelRecover-1.1.0.zip` | 速度插值与界面设计参考 | 已有，8,278,419 字节 | `https://zenodo.org/api/records/15053268/files/VelRecover-1.1.0.zip/content` | `793cf016f3656a80b18b2cb23efe30a0` |
 
@@ -26,7 +28,10 @@ tar -xzf data/taranaki/taranaki-basin-curated-well-logs.tar.gz -C data/taranaki
 
 - **`vp_marmousi_bi`**：来自开源地震正演框架 Devito 的测试数据仓库 [devitocodes/data](https://github.com/devitocodes/data/blob/master/Simple2D/vp_marmousi_bi)（2016-11-07 提交，说明为 “larger 2D marmousi”），本地文件 MD5 与仓库文件一致。Devito 在 `examples/seismic/preset_models.py` 中按形状 (1601, 401)、网格间距 (7.5 m, 7.5 m) 读取。
   - 即横向 12 km、纵向 3 km。速度范围 1028～4700 m/s 与 Marmousi2 的水层和最高速度一致，推测是 Marmousi2 的中段重采样版本；Devito 只称其为“2D Marmousi model”，报告中按“Devito 提供的 Marmousi 二维模型”引用。
-- **`marmousi2_synthetic_seismic.npy`**：未查到确切出处。形状 2721×701 与 Marmousi2 全宽（17 km）按 6.25 m 道距重采样的道数吻合，但无法确认纵向采样。该文件已不参与训练与评估，只用于地震读取和显示测试，报告中不需要引用。
+- **`marmousi2_synthetic_seismic.npy`**：来自 Zenodo 数据集 [Marmousi2](https://zenodo.org/records/14233581)（CC BY 4.0，原始数据出自休斯敦大学 AGL），与同一数据集的阻抗模型配套，MD5 一致。
+- **`vp_marmousi-ii.segy`**：Marmousi2 官方纵波速度模型，13601 道 × 2801 采样，网格 1.25 m，单位 km/s，速度 1.028～4.700。由阻抗除以速度反推的密度 99.9% 落在 1.01～2.63 g/cm³，确认两者同网格对齐。
+- **对应关系**：地震 2721×701 = 模型按横向每 5 点、纵向每 4 点抽样（道距 6.25 m、深度采样 5 m，深度域）。即 `vp[::5, ::4]` 与地震逐点对齐（残余偏移约 1 个采样点）。
+- **Devito 模型与 Marmousi2 的关系**：`vp_marmousi_bi` 是 Marmousi2 重采样到 7.5 m 后，从第 333 道、第 33 个深度点开始截取的 1601×401 子块（横向 2.5～14.5 km，纵向 0.25～3.25 km），逐点平均误差 3.7 m/s。
 
 ## 数据格式（2026-09-29 核对）
 
@@ -48,11 +53,8 @@ tar -xzf data/taranaki/taranaki-basin-curated-well-logs.tar.gz -C data/taranaki
 
 ## 已知问题
 
-**现有合成地震剖面与 `vp_marmousi_bi` 不是同一区域。** 地震剖面覆盖 Marmousi2 全宽（两侧为平缓地层），`vp_marmousi_bi` 只截取了中部构造区。无论按深度域还是时间域（扫描 dz、dt、子波主频）对齐，逐道相关系数都接近 0，也不知道截取窗口的位置。因此这两份数据不能直接组成训练样本对。
-
-**已解决（2026-09-29）：** 改用 `scripts/make_synthetic.py` 由 `vp_marmousi_bi` 正演生成深度域合成地震（Gardner 密度 + 25 Hz Ricker 子波），输出到 `data/synthetic/`，与速度模型逐点对齐。原 `marmousi2_synthetic_seismic.npy` 仅保留作地震显示与读取测试用。
-
-网格间距取 Devito 给出的 dx = dz = 7.5 m（见下方“数据来源”），可用 `--dz` 修改。如需完整 Marmousi2 数据，可下载 `10.5281/zenodo.14233581`。
+- **（已解决）** 旧合成地震与 `vp_marmousi_bi` 对不上：地震覆盖 Marmousi2 全宽，而 Devito 模型只是其中一块，网格也不同。下载官方 Marmousi2 速度模型后，地震与 `vp[::5, ::4]` 逐点对齐，可直接组成训练样本对。
+- 该地震不是简单的褶积模型：用单一子波拟合，留出道上的相关系数约 0.57，说明它包含更真实的波动效应，比 `scripts/make_synthetic.py` 的褶积正演更接近实际。
 
 ## 建议补充的数据
 
